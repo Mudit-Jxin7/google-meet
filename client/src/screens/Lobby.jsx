@@ -23,7 +23,7 @@ const Lobby = () => {
 
   const handleJoinRoom = useCallback((data) => {
     const {email , room} = data;
-    console.log(email , room);
+    navigate(`/room/${room}`);
   } , [])
 
   useEffect(() => {
@@ -35,28 +35,41 @@ const Lobby = () => {
   
 
   return (
-    <div>
-      <h1>Lobby</h1>
-      <form onSubmit={handleSubmitForm}>
-        <label htmlFor="email">Email ID</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br />
-        <label htmlFor="room">Room Number</label>
-        <input
-          type="text"
-          id="room"
-          value={room}
-          onChange={(e) => setRoom(e.target.value)}
-        />
-        <br />
-        <button>Join</button>
-      </form>
-    </div>
+    <div style={{ textAlign: 'center', maxWidth: '400px', margin: 'auto', paddingTop: '50px' }}>
+  <h1 style={{ color: '#333', fontFamily: 'Arial, sans-serif' }}>Lobby</h1>
+  <form onSubmit={handleSubmitForm} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <label htmlFor="email" style={{ marginBottom: '8px', color: '#555', fontFamily: 'Arial, sans-serif' }}>Email ID</label>
+    <input
+      type="email"
+      id="email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      style={{ padding: '8px', marginBottom: '16px', width: '100%', borderRadius: '4px', border: '1px solid #ccc' }}
+    />
+    <label htmlFor="room" style={{ marginBottom: '8px', color: '#555', fontFamily: 'Arial, sans-serif' }}>Room Number</label>
+    <input
+      type="text"
+      id="room"
+      value={room}
+      onChange={(e) => setRoom(e.target.value)}
+      style={{ padding: '8px', marginBottom: '24px', width: '100%', borderRadius: '4px', border: '1px solid #ccc' }}
+    />
+    <button
+      style={{
+        backgroundColor: '#4CAF50',
+        color: 'white',
+        padding: '10px 15px',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
+        fontSize: '16px',
+      }}
+    >
+      Join
+    </button>
+  </form>
+</div>
+
   );
 };
 
